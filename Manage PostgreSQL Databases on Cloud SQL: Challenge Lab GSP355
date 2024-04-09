@@ -33,9 +33,9 @@ CREATE EXTENSION pglogical;
 
 
 
-CREATE USER techcps PASSWORD 'DMS_1s_cool!';
-ALTER DATABASE orders OWNER TO techcps;
-ALTER ROLE techcps WITH REPLICATION;
+CREATE USER migration_user PASSWORD 'DMS_1s_cool!';
+ALTER DATABASE orders OWNER TO migration_user;
+ALTER ROLE migration_user WITH REPLICATION;
 
 
 
@@ -48,77 +48,77 @@ ALTER TABLE inventory_items ADD PRIMARY KEY (id);
 
 
 \c postgres;
-GRANT USAGE ON SCHEMA pglogical TO techcps;
-GRANT ALL ON SCHEMA pglogical TO techcps;
-GRANT SELECT ON pglogical.tables TO techcps;
-GRANT SELECT ON pglogical.depend TO techcps;
-GRANT SELECT ON pglogical.local_node TO techcps;
-GRANT SELECT ON pglogical.local_sync_status TO techcps;
-GRANT SELECT ON pglogical.node TO techcps;
-GRANT SELECT ON pglogical.node_interface TO techcps;
-GRANT SELECT ON pglogical.queue TO techcps;
-GRANT SELECT ON pglogical.replication_set TO techcps;
-GRANT SELECT ON pglogical.replication_set_seq TO techcps;
-GRANT SELECT ON pglogical.replication_set_table TO techcps;
-GRANT SELECT ON pglogical.sequence_state TO techcps;
-GRANT SELECT ON pglogical.subscription TO techcps;
+GRANT USAGE ON SCHEMA pglogical TO migration_user;
+GRANT ALL ON SCHEMA pglogical TO migration_user;
+GRANT SELECT ON pglogical.tables TO migration_user;
+GRANT SELECT ON pglogical.depend TO migration_user;
+GRANT SELECT ON pglogical.local_node TO migration_user;
+GRANT SELECT ON pglogical.local_sync_status TO migration_user;
+GRANT SELECT ON pglogical.node TO migration_user;
+GRANT SELECT ON pglogical.node_interface TO migration_user;
+GRANT SELECT ON pglogical.queue TO migration_user;
+GRANT SELECT ON pglogical.replication_set TO migration_user;
+GRANT SELECT ON pglogical.replication_set_seq TO migration_user;
+GRANT SELECT ON pglogical.replication_set_table TO migration_user;
+GRANT SELECT ON pglogical.sequence_state TO migration_user;
+GRANT SELECT ON pglogical.subscription TO migration_user;
 
 
 
 \c orders;
-GRANT USAGE ON SCHEMA pglogical TO techcps;
-GRANT ALL ON SCHEMA pglogical TO techcps;
-GRANT SELECT ON pglogical.tables TO techcps;
-GRANT SELECT ON pglogical.depend TO techcps;
-GRANT SELECT ON pglogical.local_node TO techcps;
-GRANT SELECT ON pglogical.local_sync_status TO techcps;
-GRANT SELECT ON pglogical.node TO techcps;
-GRANT SELECT ON pglogical.node_interface TO techcps;
-GRANT SELECT ON pglogical.queue TO techcps;
-GRANT SELECT ON pglogical.replication_set TO techcps;
-GRANT SELECT ON pglogical.replication_set_seq TO techcps;
-GRANT SELECT ON pglogical.replication_set_table TO techcps;
-GRANT SELECT ON pglogical.sequence_state TO techcps;
-GRANT SELECT ON pglogical.subscription TO techcps;
+GRANT USAGE ON SCHEMA pglogical TO migration_user;
+GRANT ALL ON SCHEMA pglogical TO migration_user;
+GRANT SELECT ON pglogical.tables TO migration_user;
+GRANT SELECT ON pglogical.depend TO migration_user;
+GRANT SELECT ON pglogical.local_node TO migration_user;
+GRANT SELECT ON pglogical.local_sync_status TO migration_user;
+GRANT SELECT ON pglogical.node TO migration_user;
+GRANT SELECT ON pglogical.node_interface TO migration_user;
+GRANT SELECT ON pglogical.queue TO migration_user;
+GRANT SELECT ON pglogical.replication_set TO migration_user;
+GRANT SELECT ON pglogical.replication_set_seq TO migration_user;
+GRANT SELECT ON pglogical.replication_set_table TO migration_user;
+GRANT SELECT ON pglogical.sequence_state TO migration_user;
+GRANT SELECT ON pglogical.subscription TO migration_user;
 
 
-GRANT USAGE ON SCHEMA public TO techcps;
-GRANT ALL ON SCHEMA public TO techcps;
-GRANT SELECT ON public.distribution_centers TO techcps;
-GRANT SELECT ON public.inventory_items TO techcps;
-GRANT SELECT ON public.order_items TO techcps;
-GRANT SELECT ON public.products TO techcps;
-GRANT SELECT ON public.users TO techcps;
+GRANT USAGE ON SCHEMA public TO migration_user;
+GRANT ALL ON SCHEMA public TO migration_user;
+GRANT SELECT ON public.distribution_centers TO migration_user;
+GRANT SELECT ON public.inventory_items TO migration_user;
+GRANT SELECT ON public.order_items TO migration_user;
+GRANT SELECT ON public.products TO migration_user;
+GRANT SELECT ON public.users TO migration_user;
 
 
 \c gmemegen_db;
-GRANT USAGE ON SCHEMA pglogical TO techcps;
-GRANT ALL ON SCHEMA pglogical TO techcps;
-GRANT SELECT ON pglogical.tables TO techcps;
-GRANT SELECT ON pglogical.depend TO techcps;
-GRANT SELECT ON pglogical.local_node TO techcps;
-GRANT SELECT ON pglogical.local_sync_status TO techcps;
-GRANT SELECT ON pglogical.node TO techcps;
-GRANT SELECT ON pglogical.node_interface TO techcps;
-GRANT SELECT ON pglogical.queue TO techcps;
-GRANT SELECT ON pglogical.replication_set TO techcps;
-GRANT SELECT ON pglogical.replication_set_seq TO techcps;
-GRANT SELECT ON pglogical.replication_set_table TO techcps;
-GRANT SELECT ON pglogical.sequence_state TO techcps;
-GRANT SELECT ON pglogical.subscription TO techcps;
+GRANT USAGE ON SCHEMA pglogical TO migration_user;
+GRANT ALL ON SCHEMA pglogical TO migration_user;
+GRANT SELECT ON pglogical.tables TO migration_user;
+GRANT SELECT ON pglogical.depend TO migration_user;
+GRANT SELECT ON pglogical.local_node TO migration_user;
+GRANT SELECT ON pglogical.local_sync_status TO migration_user;
+GRANT SELECT ON pglogical.node TO migration_user;
+GRANT SELECT ON pglogical.node_interface TO migration_user;
+GRANT SELECT ON pglogical.queue TO migration_user;
+GRANT SELECT ON pglogical.replication_set TO migration_user;
+GRANT SELECT ON pglogical.replication_set_seq TO migration_user;
+GRANT SELECT ON pglogical.replication_set_table TO migration_user;
+GRANT SELECT ON pglogical.sequence_state TO migration_user;
+GRANT SELECT ON pglogical.subscription TO migration_user;
 
 
-GRANT USAGE ON SCHEMA public TO techcps;
-GRANT ALL ON SCHEMA public TO techcps;
-GRANT SELECT ON public.meme TO techcps;
+GRANT USAGE ON SCHEMA public TO migration_user;
+GRANT ALL ON SCHEMA public TO migration_user;
+GRANT SELECT ON public.meme TO migration_user;
 
 \c orders;
 \dt
-ALTER TABLE public.distribution_centers OWNER TO techcps;
-ALTER TABLE public.inventory_items OWNER TO techcps;
-ALTER TABLE public.order_items OWNER TO techcps;
-ALTER TABLE public.products OWNER TO techcps;
-ALTER TABLE public.users OWNER TO techcps;
+ALTER TABLE public.distribution_centers OWNER TO migration_user;
+ALTER TABLE public.inventory_items OWNER TO migration_user;
+ALTER TABLE public.order_items OWNER TO migration_user;
+ALTER TABLE public.products OWNER TO migration_user;
+ALTER TABLE public.users OWNER TO migration_user;
 \dt
 
 
